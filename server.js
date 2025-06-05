@@ -1,12 +1,13 @@
 import express from 'express';
-import connectDB from './db/config';
-import { User } from './db/models/user';
+import connectDB from './db/config.js';
+import { User } from './db/models/user.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
 connectDB();
+
 app.post('/user',async(req,res)=>{
     try {
         const newUser = new User(req.body);
@@ -17,8 +18,13 @@ app.post('/user',async(req,res)=>{
     }
 });
 
-app.get('/',(req,res)=>{
-    res.send("this is the root");
+app.get('/',async(req,res)=>{
+   try {
+    const users = User.find();
+    res.send(users);
+   } catch (error) {
+    res.status(400).json({message:error.message});
+   }
 });
 
 app.listen(PORT,()=>{
