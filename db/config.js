@@ -7,7 +7,7 @@ import mongoose from 'mongoose';
         
     }catch(error){
         console.error("MongoDB connection failed ",error.messages);
-        process.exit(1);
+                     process.exit(1);
     }
 }
 

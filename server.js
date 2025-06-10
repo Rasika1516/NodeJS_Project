@@ -41,6 +41,15 @@ app.put("/update/:id",async(req,res)=>{
     }
 });
 
+app.delete("/delete/:id",async(req,res)=>{
+   try {
+     await User.findByIdAndDelete(req.params.id);
+    res.send({message:"Record has been deleted"});
+   } catch (error) {
+      res.status(400).json({message:error.message});
+   }
+
+})
 app.listen(PORT,()=>{
     console.log(`App is running on port http://localhost:${PORT}`);
 });
