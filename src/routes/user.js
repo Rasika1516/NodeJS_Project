@@ -1,21 +1,27 @@
 import express from "express";
-import { addUser,getUser,updateUser ,deleteUser,getOneUser} from "../controllers/user.js";
+import {
+  addUser,
+  getUser,
+  updateUser,
+  deleteUser,
+  getOneUser,
+} from "../controllers/user.js";
 
-const userLoginuserLoginRouter = express.userLoginRouter();
+const router = express.Router();
 
 //add API
-userLoginRouter.post("/addUser", addUser);
+router.post("/addUser", addUser);
 
 //get API
-userLoginRouter.get("/getUser",getUser);
+router.get("/getUser", getUser);
 
 //get API
-userLoginRouter.get("/getUser/:id",getOneUser);
+router.get("/getUser/:id", getOneUser);
 
 //update API
-userLoginRouter.put("/updateUser/:id",updateUser);
+router.put("/updateUser/:id", updateUser);
 
 //delete API
-userLoginRouter.delete("/deleteUser/:id",deleteUser);
+router.delete("/deleteUser/:id", deleteUser);
 
-export { userLoginRouter };
+export default router;

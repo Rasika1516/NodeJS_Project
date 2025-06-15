@@ -1,4 +1,4 @@
-import connectDB from "../db/config.js";
+import { connectDB } from "../db/config.js";
 import { User } from "../db/models/user.js";
 connectDB();
 
@@ -15,9 +15,9 @@ export const addUser = async (req, res) => {
 };
 
 //get user list
-export const getUser = async(req,res)=>{
+export const getUser = async (req, res) => {
   try {
-    const user =await  User.find({});
+    const user = await User.find({});
     res.json(user);
     console.log("Records fetched successfully");
   } catch (error) {
@@ -26,9 +26,9 @@ export const getUser = async(req,res)=>{
 };
 
 //get one user list
-export const getOneUser = async(req,res)=>{
+export const getOneUser = async (req, res) => {
   try {
-    const user =await  User.findById(req.params.id);
+    const user = await User.findById(req.params.id);
     res.json(user);
     console.log("Records fetched successfully");
   } catch (error) {
@@ -37,7 +37,7 @@ export const getOneUser = async(req,res)=>{
 };
 
 //update the user
-export const updateUser = async(req,res)=>{
+export const updateUser = async (req, res) => {
   try {
     const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -47,7 +47,7 @@ export const updateUser = async(req,res)=>{
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
-}
+};
 
 //delete the User
 export const deleteUser = async (req, res) => {
@@ -57,4 +57,4 @@ export const deleteUser = async (req, res) => {
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
-}
+};

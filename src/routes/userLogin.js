@@ -1,15 +1,21 @@
-import express from 'express';
-import {adduserLogin,updateuserLogin,getuserLogin,getOneuserLogin,deleteuserLogin} from '../controllers/userLogin.js';
+import express from "express";
+import {
+  adduserLogin,
+  updateuserLogin,
+  getuserLogin,
+  getOneuserLogin,
+  deleteuserLogin,
+} from "../controllers/userLogin.js";
 const router = express.Router();
 
-router.post("/adduerLogin",adduserLogin);
+router.post("/adduerLogin", adduserLogin);
 
-router.get("/getuserLogin",getuserLogin);
+router.get("/getuserLogin", getuserLogin);
 
-router.get("/getuserLogin",getOneuserLogin);
+router.get("/getuserLogin", getOneuserLogin);
 
-router.put("/updateUserLogin",updateuserLogin);
+router.put("/updateUserLogin", updateuserLogin);
 
-router.delete('/deleteUserLogin',deleteuserLogin);
+router.delete("/deleteUserLogin", deleteuserLogin);
 
-export {router};
+export default router;

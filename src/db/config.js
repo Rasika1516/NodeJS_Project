@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-const connectDB = async () => {
+export const connectDB = async () => {
   try {
-    await mongoose.connect("mongodb://localhost:27017/User");
+    await mongoose.connect("mongodb://localhost:27017/MyDatabase");
     console.log("User connected successfully");
   } catch (error) {
     console.error("MongoDB connection failed ", error.messages);
@@ -10,7 +10,7 @@ const connectDB = async () => {
   }
 };
 
-const connect = async () => {
+export const connect = async () => {
   try {
     await mongoose.connect("mongodb://localhost:27017/userLogin");
     console.log("UserLogin connected successfully");
@@ -19,5 +19,3 @@ const connect = async () => {
     process.exit(1);
   }
 };
-
-export default {connectDB,connect};

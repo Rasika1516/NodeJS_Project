@@ -1,6 +1,6 @@
-import connect from "../db/config.js";
+import { connect } from "../db/config.js";
 import { userLogin } from "../db/models/userLogin.js";
-connect();
+// connect();
 
 //Add userLogin
 export const adduserLogin = async (req, res) => {
@@ -15,9 +15,9 @@ export const adduserLogin = async (req, res) => {
 };
 
 //get userLogin list
-export const getuserLogin = async(req,res)=>{
+export const getuserLogin = async (req, res) => {
   try {
-    const userLogin =await  userLogin.find({});
+    const userLogin = await userLogin.find({});
     res.json(userLogin);
     console.log("Records fetched successfully");
   } catch (error) {
@@ -26,9 +26,9 @@ export const getuserLogin = async(req,res)=>{
 };
 
 //get one userLogin list
-export const getOneuserLogin = async(req,res)=>{
+export const getOneuserLogin = async (req, res) => {
   try {
-    const userLogin =await  userLogin.findById(req.params.id);
+    const userLogin = await userLogin.findById(req.params.id);
     res.json(userLogin);
     console.log("Records fetched successfully");
   } catch (error) {
@@ -37,17 +37,21 @@ export const getOneuserLogin = async(req,res)=>{
 };
 
 //update the userLogin
-export const updateuserLogin = async(req,res)=>{
+export const updateuserLogin = async (req, res) => {
   try {
-    const updateduserLogin = await userLogin.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
+    const updateduserLogin = await userLogin.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+      }
+    );
     res.send(updateduserLogin);
     console.log("Record has been updated successfully");
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
-}
+};
 
 //delete the userLogin
 export const deleteuserLogin = async (req, res) => {
@@ -57,4 +61,4 @@ export const deleteuserLogin = async (req, res) => {
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
-}
+};
